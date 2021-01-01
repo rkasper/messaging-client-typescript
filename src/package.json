@@ -1,0 +1,42 @@
+{
+  "name": "hello-typescript",
+  "version": "1.0.0",
+  "description": "An easy starting point for a new TypeScript project",
+  "scripts": {
+    "precompile": "rimraf app/**/*.js test/**/*.js",
+    "compile": "tsc",
+    "pretest": "rimraf app/**/*.js test/**/*.js",
+    "test": "nyc mocha",
+    "message": "./node_modules/ts-node/dist/bin.js app/message-main.ts"
+  },
+  "license": "CC-BY-SA-4.0",
+  "private": true,
+  "devDependencies": {
+    "@types/chai": "~3.5.2",
+    "@types/mocha": "~2.2.41",
+    "@types/node": "~7.0.18",
+    "chai": "~3.5.0",
+    "mocha": "~3.2.0",
+    "nyc": "~11.0.3",
+    "rimraf": "~2.5.2",
+    "source-map-support": "0.5.9",
+    "ts-node": "~3.1.0",
+    "typescript": "~3.0.3"
+  },
+  "nyc": {
+    "extension": [
+      ".ts"
+    ],
+    "exclude": [
+      "**/*.d.ts",
+      "test/**"
+    ],
+    "require": [
+      "ts-node/register"
+    ],
+    "reporter": [
+      "html",
+      "text"
+    ]
+  }
+}

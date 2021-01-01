@@ -1,0 +1,8 @@
+#/bin/bash
+
+if [ $# == 2 ] # TODO obvious improvement goes here
+then
+    ./node_modules/ts-node/dist/bin.js app/message-main.ts "$1" "$2"
+else
+    ./node_modules/ts-node/dist/bin.js app/message-main.ts "$1" "$2" "$3"
+fi
