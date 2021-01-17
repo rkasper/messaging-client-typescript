@@ -36,7 +36,7 @@ describe('Hello, TypeScript!', function () {
             '\n' +
             'disconnect\n'
         let actual1 = client.createMessage('joe@example.com', 'Hi there!');
-        assert.equal(actual1, expected);
+        assert.strictEqual(actual1, expected);
 
         expected = 'connect smtp\n' +
             'To: mary@example.com\n' +
@@ -44,7 +44,7 @@ describe('Hello, TypeScript!', function () {
             'Hello, Mary!\n' +
             '\n' +
             'disconnect\n'
-        assert.equal(client.createMessage('mary@example.com', 'Hello, Mary!'), expected);
+        assert.strictEqual(client.createMessage('mary@example.com', 'Hello, Mary!'), expected);
     });
 
     // TODO Not a true micro test because it creates and reads from a file
@@ -61,7 +61,7 @@ describe('Hello, TypeScript!', function () {
             '\n' +
             'disconnect\n';
         let actual = fs.readFileSync(MessagingClient.mockNetworkFileName).toString();
-        assert.equal(actual, expected);
+        assert.strictEqual(actual, expected);
         fs.unlinkSync(MessagingClient.mockNetworkFileName);
     });
 
@@ -123,12 +123,12 @@ describe('Hello, TypeScript!', function () {
             'Hi there!\n' +
             '\n' +
             'disconnect\n';
-        assert.equal(msg, expected);
+        assert.strictEqual(msg, expected);
 
         client.sendMessage(msg);
         assert.isTrue(fs.existsSync("/tmp/messaging-client-mock-network.txt"));
         let actual = fs.readFileSync(MessagingClient.mockNetworkFileName).toString();
-        assert.equal(actual, expected);
+        assert.strictEqual(actual, expected);
         fs.unlinkSync(MessagingClient.mockNetworkFileName);
     });
 
@@ -150,12 +150,12 @@ describe('Hello, TypeScript!', function () {
         let expected: string = 'connect chat\n' +
             '<leslie@chat.example.com>:-> :-) hey there!\n' +
             'disconnect\n';
-        assert.equal(msg, expected);
+        assert.strictEqual(msg, expected);
 
         client.sendMessage(msg);
         assert.isTrue(fs.existsSync("/tmp/messaging-client-mock-network.txt"));
         let actual = fs.readFileSync(MessagingClient.mockNetworkFileName).toString();
-        assert.equal(actual, expected);
+        assert.strictEqual(actual, expected);
         fs.unlinkSync(MessagingClient.mockNetworkFileName);
     });
 });
