@@ -7,7 +7,7 @@ args.shift();
 
 try {
     let msg: string;
-    if (args.length == 2) {
+    if (2 === args.length) {
         msg = client.createMessage(args[0], args[1]);
     } else {
         // TODO Be more careful with array length
