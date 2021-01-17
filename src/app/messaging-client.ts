@@ -6,10 +6,10 @@ export class MessagingClient {
     static readonly invalidMessageBody = 'Cannot send an email with no body.';
 
     createMessage(...args: any[]): string {
-        if (args.length == 2) {
+        if (2 === args.length) {
             return this.createEmailMessage(args);
-        } else if (args.length == 3) {
-            return this.creatInstantMessage(args);
+        } else if (3 === args.length) {
+            return MessagingClient.creatInstantMessage(args);
         } else {
             throw MessagingClient.invalidMessageBody;
         }
@@ -32,7 +32,7 @@ export class MessagingClient {
         return message;
     }
 
-    private creatInstantMessage(args: any[]): string {
+    private static creatInstantMessage(args: any[]): string {
         return 'connect chat\n<' + args[1] + '>:-> ' + args[2] + '\ndisconnect\n';
     }
 
@@ -41,6 +41,6 @@ export class MessagingClient {
     }
 
     validateEmailAddress(email: string): boolean {
-        return email.indexOf('@') != -1;
+        return -1 !== email.indexOf('@');
     }
 }
